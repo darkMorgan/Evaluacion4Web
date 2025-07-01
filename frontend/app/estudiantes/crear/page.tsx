@@ -21,13 +21,13 @@ export default function CrearEstudiantePage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    await fetch('http://localhost:3001/api/estudiantes', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(form),
-    });
+   await fetch(`${process.env.NEXT_PUBLIC_API_URL}/estudiantes`, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(form),
+});
 
     router.push('/');
   };
