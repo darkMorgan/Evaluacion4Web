@@ -7,11 +7,12 @@ const sequelize = new Sequelize(
   process.env.DB_PASS,
   {
     host: process.env.DB_HOST,
-    dialect: 'postgres', // Cambiado de 'mysql' a 'postgres'
+    port: process.env.DB_PORT, // ← incluye el puerto
+    dialect: 'postgres',        // ← cambia a postgres
     dialectOptions: {
       ssl: {
         require: true,
-        rejectUnauthorized: false, // Importante para conexión segura con Render
+        rejectUnauthorized: false, // necesario para Render
       },
     },
   }
