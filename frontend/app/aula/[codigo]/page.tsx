@@ -1,11 +1,10 @@
 // app/aula/[codigo]/page.tsx
-
 import AulaClient from './AulaClient';
 
-type PageProps = {
+interface Props {
   params: { codigo: string };
-};
+}
 
-export default async function AulaPage({ params }: PageProps) {
+export default function AulaPage({ params }: Props) {
   return <AulaClient codigo={params.codigo} />;
 }
