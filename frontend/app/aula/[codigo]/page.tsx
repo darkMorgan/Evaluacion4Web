@@ -1,14 +1,11 @@
-// Este archivo está temporalmente deshabilitado para evitar errores en el build de Vercel
-// Puedes restaurarlo cuando hayas corregido los errores de tipado
-
-/*
+// app/aula/[codigo]/page.tsx
 import AulaClient from './AulaClient';
 
 interface Props {
   params: { codigo: string };
 }
 
-export default function AulaPage({ params }: Props) {
+// 👇 importante: hacer esta función async aunque no hagas await
+export default async function AulaPage({ params }: Props) {
   return <AulaClient codigo={params.codigo} />;
 }
-*/
