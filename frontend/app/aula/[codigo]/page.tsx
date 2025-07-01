@@ -1,11 +1,10 @@
-// app/aula/[codigo]/page.tsx
 import AulaClient from './AulaClient';
 
-interface Props {
+interface Params {
   params: { codigo: string };
 }
 
-// 👇 importante: hacer esta función async aunque no hagas await
-export default async function AulaPage({ params }: Props) {
+// 👇 ¡Esto debe ser async aunque no uses await!
+export default async function AulaPage({ params }: Params) {
   return <AulaClient codigo={params.codigo} />;
 }
