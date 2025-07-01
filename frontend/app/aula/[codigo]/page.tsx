@@ -11,13 +11,16 @@ interface Estudiante {
   carrera: string;
 }
 
-export default function AulaPage({ params }: { params: { codigo: string } }) {
+interface PageParams {
+  params: { codigo: string };
+}
+
+export default function AulaPage({ params }: PageParams) {
   const router = useRouter();
   const [estudiante, setEstudiante] = useState<Estudiante | null>(null);
 
   useEffect(() => {
-   fetch(`${process.env.NEXT_PUBLIC_API_URL}/estudiantes/${params.codigo}`)
-
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/estudiantes/${params.codigo}`)
       .then((res) => res.json())
       .then((data) => setEstudiante(data));
   }, [params.codigo]);
