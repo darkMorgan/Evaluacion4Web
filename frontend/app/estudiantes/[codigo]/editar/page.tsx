@@ -19,7 +19,7 @@ export default function EditarEstudiantePage({ params }: Props) {
 
   useEffect(() => {
     const fetchEstudiante = async () => {
-      const res = await fetch(`http://localhost:3001/api/estudiantes/${params.codigo}`);
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/estudiantes/${params.codigo}`);
       const data = await res.json();
       setForm(data);
     };
@@ -33,13 +33,14 @@ export default function EditarEstudiantePage({ params }: Props) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    await fetch(`http://localhost:3001/api/estudiantes/${params.codigo}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(form),
-    });
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/estudiantes/${params.codigo}`, {
+  method: 'PUT',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(form),
+});
+
 
     router.push('/');
   };
