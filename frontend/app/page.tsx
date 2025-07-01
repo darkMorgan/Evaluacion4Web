@@ -17,7 +17,7 @@ function HomePage() {
   const router = useRouter();
 
   const cargarEstudiantes = async () => {
-    const res = await fetch('http://localhost:3001/api/estudiantes');
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/estudiantes`);
     const data = await res.json();
     setEstudiantes(data);
   };
@@ -29,9 +29,9 @@ function HomePage() {
   const eliminarEstudiante = async (codigo: string) => {
     if (!confirm('¿Estás seguro de eliminar este estudiante?')) return;
 
-    await fetch(`http://localhost:3001/api/estudiantes/${codigo}`, {
-      method: 'DELETE',
-    });
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/estudiantes/${codigo}`, {
+  method: 'DELETE',
+});
 
     await cargarEstudiantes();
   };
