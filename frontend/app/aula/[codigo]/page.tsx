@@ -16,7 +16,8 @@ export default function AulaPage({ params }: { params: { codigo: string } }) {
   const [estudiante, setEstudiante] = useState<Estudiante | null>(null);
 
   useEffect(() => {
-    fetch(`http://localhost:3001/api/estudiantes/${params.codigo}`)
+   fetch(`${process.env.NEXT_PUBLIC_API_URL}/estudiantes/${params.codigo}`)
+
       .then((res) => res.json())
       .then((data) => setEstudiante(data));
   }, [params.codigo]);
